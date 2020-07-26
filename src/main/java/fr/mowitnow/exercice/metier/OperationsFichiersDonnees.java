@@ -19,12 +19,4 @@ public interface OperationsFichiersDonnees {
 	 * @throws IOException 
 	 */
 	InformationsEntree lireFichierEntree(String chemin) throws IOException;
-	
-	/**
-	 * Créer un fichier de données en sortie
-	 * 
-	 * @param listeTondeuses
-	 * @return le chemin du fichier de sortie
-	 */
-	String creerFichierSortie(List<Tondeuse> listeTondeuses);
 }

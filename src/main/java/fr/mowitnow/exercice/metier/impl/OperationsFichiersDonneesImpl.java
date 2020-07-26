@@ -51,15 +51,6 @@ public class OperationsFichiersDonneesImpl implements OperationsFichiersDonnees 
 	}
 	
 	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String creerFichierSortie(List<Tondeuse> listeTondeuses) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	/**
 	 * Créer un objet Tondeuse
 	 * 
 	 * @param lignesFichier
