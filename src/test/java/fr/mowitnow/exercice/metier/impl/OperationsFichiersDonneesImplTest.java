@@ -1,6 +1,8 @@
 package fr.mowitnow.exercice.metier.impl;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNull;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -58,5 +60,21 @@ public class OperationsFichiersDonneesImplTest {
 			isEqualTo(informationsEntreeExpected);
 		
 		writer.close();
+	}
+	
+	@Test
+	public void testLireFichierEntree_FichierNull() {
+
+		InformationsEntree informationsEntreeActual = 
+				this.operationsFichiersDonnees.lireFichierEntree(null);
+		assertNull(informationsEntreeActual);
+	}
+	
+	@Test
+	public void testLireFichierEntree_CheminFichierInexistant() {
+
+		InformationsEntree informationsEntreeActual = 
+				this.operationsFichiersDonnees.lireFichierEntree("cheminInexistant");
+		assertNull(informationsEntreeActual);
 	}
 }
