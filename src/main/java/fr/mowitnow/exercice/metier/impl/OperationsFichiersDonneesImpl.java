@@ -27,7 +27,6 @@ public class OperationsFichiersDonneesImpl implements OperationsFichiersDonnees 
 	
 	/**
 	 * {@inheritDoc}
-	 * @throws IOException 
 	 */
 	@Override
 	public InformationsEntree lireFichierEntree(String chemin) throws IOException {

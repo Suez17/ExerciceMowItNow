@@ -16,6 +16,7 @@ public interface OperationsFichiersDonnees {
 	 * 
 	 * @param chemin
 	 * @return les informations d'entrée
+	 * @throws IOException 
 	 */
 	InformationsEntree lireFichierEntree(String chemin) throws IOException;
 	
