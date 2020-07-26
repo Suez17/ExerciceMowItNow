@@ -27,11 +27,12 @@ public class OperationsFichiersDonneesImplTest {
 	public void testLireFichierEntree_FichierValide() throws IOException {
 		File fichierTemp = this.dossierTemp.newFile("fichierTest.txt");
 		BufferedWriter writer = Files.newBufferedWriter(fichierTemp.toPath());
-		writer.append("5 5");
-		writer.append("1 2 N");
-		writer.append("GAGAGAGAA");
-		writer.append("3 3 E");
-		writer.append("AADAADADDA");
+		writer.append("5 5\n");
+		writer.append("1 2 N\n");
+		writer.append("GAGAGAGAA\n");
+		writer.append("3 3 E\n");
+		writer.append("AADAADADDA\n");
+		writer.flush();
 		
 		InformationsEntree informationsEntreeExpected = new InformationsEntree();
 		informationsEntreeExpected.setGrille(new Grille(5, 5));
