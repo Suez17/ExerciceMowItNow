@@ -8,19 +8,19 @@ import fr.mowitnow.exercice.enumeration.PointCardinal;
 public class Tondeuse {
 
 	/**
-	 * Orientation initiale
+	 * Orientation
 	 */
-	private PointCardinal orientationInitiale;
+	private PointCardinal orientation;
 	
 	/**
-	 * Position X initiale
+	 * Position X
 	 */
-	private int positionXInitiale;
+	private int positionX;
 	
 	/**
-	 * Position Y initiale
+	 * Position Y
 	 */
-	private int positionYInitiale;
+	private int positionY;
 	
 	/**
 	 * Instuction pour se déplacer
@@ -28,57 +28,57 @@ public class Tondeuse {
 	private String instruction;
 
 	/**
-	 * Getter orientationInitiale
+	 * Getter orientation
 	 * 
-	 * @return the orientationInitiale
+	 * @return the orientation
 	 */
-	public PointCardinal getOrientationInitiale() {
-		return orientationInitiale;
+	public PointCardinal getOrientation() {
+		return orientation;
 	}
 
 	/**
-	 * Setter orientationInitiale
+	 * Setter orientation
 	 * 
-	 * @param orientationInitiale the orientationInitiale to set
+	 * @param orientation the orientation to set
 	 */
-	public void setOrientationInitiale(PointCardinal orientationInitiale) {
-		this.orientationInitiale = orientationInitiale;
+	public void setOrientation(PointCardinal orientation) {
+		this.orientation = orientation;
 	}
 
 	/**
-	 * Getter positionXInitiale
+	 * Getter positionX
 	 * 
-	 * @return the positionXInitiale
+	 * @return the positionX
 	 */
-	public int getPositionXInitiale() {
-		return positionXInitiale;
+	public int getPositionX() {
+		return positionX;
 	}
 
 	/**
-	 * Setter positionXInitiale
+	 * Setter positionX
 	 * 
-	 * @param positionXInitiale the positionXInitiale to set
+	 * @param positionX the positionX to set
 	 */
-	public void setPositionXInitiale(int positionXInitiale) {
-		this.positionXInitiale = positionXInitiale;
+	public void setPositionX(int positionX) {
+		this.positionX = positionX;
 	}
 
 	/**
-	 * Getter positionYInitiale
+	 * Getter positionY
 	 * 
-	 * @return the positionYInitiale
+	 * @return the positionY
 	 */
-	public int getPositionYInitiale() {
-		return positionYInitiale;
+	public int getPositionY() {
+		return positionY;
 	}
 
 	/**
-	 * Setter positionYInitiale
+	 * Setter positionY
 	 * 
-	 * @param positionYInitiale the positionYInitiale to set
+	 * @param positionY the positionY to set
 	 */
-	public void setPositionYInitiale(int positionYInitiale) {
-		this.positionYInitiale = positionYInitiale;
+	public void setPositionY(int positionY) {
+		this.positionY = positionY;
 	}
 
 	/**
@@ -98,5 +98,38 @@ public class Tondeuse {
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
+	
+	/**
+	 * Avancer X
+	 */
+	public void avancerX() {
+		this.positionX++;
+	}
+	
+	/**
+	 * Reculer X
+	 */
+	public void reculerX() {
+		this.positionX--;
+	}
+	
+	/**
+	 * Avancer Y
+	 */
+	public void avancerY() {
+		this.positionY++;
+	}
+	
+	/**
+	 * Reculer Y
+	 */
+	public void reculerY() {
+		this.positionY--;
+	}
+
+	@Override
+	public String toString() {
+		return this.positionX + " " + this.positionY + " " + this.orientation;
+	}	
 	
 }
