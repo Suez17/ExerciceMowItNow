@@ -89,12 +89,12 @@ public class InterpreteurParcoursTondeusesImpl implements InterpreteurParcoursTo
 				}
 				break;
 			case S:
-				if (tondeuse.getPositionY() > 0) {
+				if (tondeuse.getPositionY() > grille.getMinY()) {
 					tondeuse.reculerY();
 				}
 				break;
 			case W:
-				if (tondeuse.getPositionX() > 0) {
+				if (tondeuse.getPositionX() > grille.getMinX()) {
 					tondeuse.reculerX();
 				}
 				break;
