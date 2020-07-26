@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import fr.mowitnow.exercice.bo.Grille;
 import fr.mowitnow.exercice.bo.InformationsEntree;
@@ -26,26 +27,27 @@ public class OperationsFichiersDonneesImpl implements OperationsFichiersDonnees 
 	
 	/**
 	 * {@inheritDoc}
+	 * @throws IOException 
 	 */
 	@Override
-	public InformationsEntree lireFichierEntree(String chemin) {
+	public InformationsEntree lireFichierEntree(String chemin) throws IOException {
 		
-		InformationsEntree informationsEntree = null;
+		final InformationsEntree informationsEntree = new InformationsEntree();
 		
-		if (chemin != null) {
-			try {
-				BufferedReader reader = Files.newBufferedReader(Paths.get(chemin));
-				List<String> lignesFichier = reader.lines().collect(Collectors.toList());
-				
-				informationsEntree = new InformationsEntree();
-				
-				String ligneGrille = lignesFichier.get(0);
-				String[] infosLigneGrille = ligneGrille.split(CARACTERE_ESPACE);
-				int maxX = Integer.parseInt(infosLigneGrille[0]);
-				int maxY = Integer.parseInt(infosLigneGrille[1]);
-				Grille grille = new Grille(maxX, maxY);
-				
-				for (int i = 1; i < lignesFichier.size(); i += 2) {
+		BufferedReader reader = Files.newBufferedReader(Paths.get(chemin));
+		List<String> lignesFichier = reader.lines().collect(Collectors.toList());
+		
+		IntStream
+			.range(0, lignesFichier.size() - 1)
+			.forEach(i -> {
+				if (i == 0) {
+					String ligneGrille = lignesFichier.get(i);
+					String[] infosLigneGrille = ligneGrille.split(CARACTERE_ESPACE);
+					int maxX = Integer.parseInt(infosLigneGrille[0]);
+					int maxY = Integer.parseInt(infosLigneGrille[1]);
+					Grille grille = new Grille(maxX, maxY);
+					informationsEntree.setGrille(grille);
+				} else if ((i % 2) != 0) {
 					Tondeuse tondeuse = new Tondeuse();
 					String lignePositionTondeuse = lignesFichier.get(i);
 					String[] infosLignePositionTondeuse = lignePositionTondeuse.split(CARACTERE_ESPACE);
@@ -59,14 +61,7 @@ public class OperationsFichiersDonneesImpl implements OperationsFichiersDonnees 
 					tondeuse.setInstruction(instructionTondeuse);
 					informationsEntree.ajouterTondeuse(tondeuse);
 				}
-				
-				informationsEntree.setGrille(grille);
-				
-			} catch (IOException e) {
-				informationsEntree = null;
-				e.printStackTrace();
-			}
-		}
+			});
 		
 		return informationsEntree;
 	}

@@ -1,5 +1,6 @@
 package fr.mowitnow.exercice.metier;
 
+import java.io.IOException;
 import java.util.List;
 
 import fr.mowitnow.exercice.bo.InformationsEntree;
@@ -16,7 +17,7 @@ public interface OperationsFichiersDonnees {
 	 * @param chemin
 	 * @return les informations d'entrée
 	 */
-	InformationsEntree lireFichierEntree(String chemin);
+	InformationsEntree lireFichierEntree(String chemin) throws IOException;
 	
 	/**
 	 * Créer un fichier de données en sortie
