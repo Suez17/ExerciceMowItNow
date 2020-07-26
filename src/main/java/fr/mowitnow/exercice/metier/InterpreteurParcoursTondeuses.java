@@ -1,18 +1,16 @@
 package fr.mowitnow.exercice.metier;
 
-import fr.mowitnow.exercice.bo.Grille;
-import fr.mowitnow.exercice.bo.Tondeuse;
+import fr.mowitnow.exercice.bo.InformationsEntree;
 
 /**
  * Interpreteur de parcours de tondeuses
  */
-public interface InterpreteurParcoursTondeuse {
+public interface InterpreteurParcoursTondeuses {
 	
 	/**
-	 * Interpreter le parcours d'une tonseuse dans la grille
+	 * Interpreter le parcours des tondeuses dans la grille
 	 * 
-	 * @param grille
-	 * @param tondeuse
+	 * @param informationsEntree
 	 */
-	void interpreterParcoursTondeuse(Grille grille, Tondeuse tondeuse);
+	void interpreterParcoursTondeuses(InformationsEntree informationsEntree);
 }
