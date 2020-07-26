@@ -44,6 +44,15 @@ public class InformationsEntree {
 	}
 	
 	/**
+	 * Getter listeTondeuses
+	 * 
+	 * @return the listeTondeuses
+	 */
+	public List<Tondeuse> getListeTondeuses() {
+		return listeTondeuses;
+	}
+	
+	/**
 	 * Ajouter une tondeuse dans la liste
 	 * 
 	 * @param tondeuse
@@ -51,4 +60,5 @@ public class InformationsEntree {
 	public void ajouterTondeuse(Tondeuse tondeuse) {
 		this.listeTondeuses.add(tondeuse);
 	}
+
 }
