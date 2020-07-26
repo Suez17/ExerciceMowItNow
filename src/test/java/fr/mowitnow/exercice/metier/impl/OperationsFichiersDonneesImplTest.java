@@ -62,19 +62,17 @@ public class OperationsFichiersDonneesImplTest {
 		writer.close();
 	}
 	
-	@Test
-	public void testLireFichierEntree_FichierNull() {
+	@Test(expected = NullPointerException.class)
+	public void testLireFichierEntree_FichierNull() throws IOException {
 
 		InformationsEntree informationsEntreeActual = 
 				this.operationsFichiersDonnees.lireFichierEntree(null);
-		assertNull(informationsEntreeActual);
 	}
 	
-	@Test
-	public void testLireFichierEntree_CheminFichierInexistant() {
+	@Test(expected = IOException.class)
+	public void testLireFichierEntree_CheminFichierInexistant() throws IOException {
 
 		InformationsEntree informationsEntreeActual = 
 				this.operationsFichiersDonnees.lireFichierEntree("cheminInexistant");
-		assertNull(informationsEntreeActual);
 	}
 }
