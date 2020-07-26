@@ -57,4 +57,104 @@ public class InterpreteurParcoursTondeusesImplTest {
 		assertThat(informationsEntree.getListeTondeuses()).usingRecursiveComparison().
 			isEqualTo(listeTondeusesExpected);
 	}
+	
+	@Test
+	public void testInterpreterParcoursTondeuses_TondeuseBloqueeNord() {
+		InformationsEntree informationsEntree = new InformationsEntree();
+		informationsEntree.setGrille(new Grille(1, 1));
+		
+		Tondeuse tondeuse = new Tondeuse();
+		tondeuse.setOrientation(PointCardinal.N);
+		tondeuse.setPositionX(1);
+		tondeuse.setPositionY(1);
+		tondeuse.setInstruction("A");
+		
+		informationsEntree.ajouterTondeuse(tondeuse);
+		
+		Tondeuse tondeuseExpected = new Tondeuse();
+		tondeuseExpected.setOrientation(PointCardinal.N);
+		tondeuseExpected.setPositionX(1);
+		tondeuseExpected.setPositionY(1);
+		tondeuseExpected.setInstruction("A");
+		
+		this.interpreteurParcoursTondeuses.interpreterParcoursTondeuses(informationsEntree);
+		
+		assertThat(informationsEntree.getListeTondeuses().get(0)).usingRecursiveComparison().
+			isEqualTo(tondeuseExpected);
+	}
+	
+	@Test
+	public void testInterpreterParcoursTondeuses_TondeuseBloqueeSud() {
+		InformationsEntree informationsEntree = new InformationsEntree();
+		informationsEntree.setGrille(new Grille(1, 1));
+		
+		Tondeuse tondeuse = new Tondeuse();
+		tondeuse.setOrientation(PointCardinal.S);
+		tondeuse.setPositionX(0);
+		tondeuse.setPositionY(0);
+		tondeuse.setInstruction("A");
+		
+		informationsEntree.ajouterTondeuse(tondeuse);
+		
+		Tondeuse tondeuseExpected = new Tondeuse();
+		tondeuseExpected.setOrientation(PointCardinal.S);
+		tondeuseExpected.setPositionX(0);
+		tondeuseExpected.setPositionY(0);
+		tondeuseExpected.setInstruction("A");
+		
+		this.interpreteurParcoursTondeuses.interpreterParcoursTondeuses(informationsEntree);
+		
+		assertThat(informationsEntree.getListeTondeuses().get(0)).usingRecursiveComparison().
+			isEqualTo(tondeuseExpected);
+	}
+	
+	@Test
+	public void testInterpreterParcoursTondeuses_TondeuseBloqueeEst() {
+		InformationsEntree informationsEntree = new InformationsEntree();
+		informationsEntree.setGrille(new Grille(1, 1));
+		
+		Tondeuse tondeuse = new Tondeuse();
+		tondeuse.setOrientation(PointCardinal.E);
+		tondeuse.setPositionX(1);
+		tondeuse.setPositionY(1);
+		tondeuse.setInstruction("A");
+		
+		informationsEntree.ajouterTondeuse(tondeuse);
+		
+		Tondeuse tondeuseExpected = new Tondeuse();
+		tondeuseExpected.setOrientation(PointCardinal.E);
+		tondeuseExpected.setPositionX(1);
+		tondeuseExpected.setPositionY(1);
+		tondeuseExpected.setInstruction("A");
+		
+		this.interpreteurParcoursTondeuses.interpreterParcoursTondeuses(informationsEntree);
+		
+		assertThat(informationsEntree.getListeTondeuses().get(0)).usingRecursiveComparison().
+			isEqualTo(tondeuseExpected);
+	}
+	
+	@Test
+	public void testInterpreterParcoursTondeuses_TondeuseBloqueeOuest() {
+		InformationsEntree informationsEntree = new InformationsEntree();
+		informationsEntree.setGrille(new Grille(1, 1));
+		
+		Tondeuse tondeuse = new Tondeuse();
+		tondeuse.setOrientation(PointCardinal.W);
+		tondeuse.setPositionX(0);
+		tondeuse.setPositionY(0);
+		tondeuse.setInstruction("A");
+		
+		informationsEntree.ajouterTondeuse(tondeuse);
+		
+		Tondeuse tondeuseExpected = new Tondeuse();
+		tondeuseExpected.setOrientation(PointCardinal.W);
+		tondeuseExpected.setPositionX(0);
+		tondeuseExpected.setPositionY(0);
+		tondeuseExpected.setInstruction("A");
+		
+		this.interpreteurParcoursTondeuses.interpreterParcoursTondeuses(informationsEntree);
+		
+		assertThat(informationsEntree.getListeTondeuses().get(0)).usingRecursiveComparison().
+			isEqualTo(tondeuseExpected);
+	}
 }
