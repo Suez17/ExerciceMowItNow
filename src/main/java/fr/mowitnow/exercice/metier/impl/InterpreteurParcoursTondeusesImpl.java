@@ -66,6 +66,7 @@ public class InterpreteurParcoursTondeusesImpl implements InterpreteurParcoursTo
 						break;
 				}
 			});
+			System.out.println(tondeuse.toString());
 		});
 		
 	}
