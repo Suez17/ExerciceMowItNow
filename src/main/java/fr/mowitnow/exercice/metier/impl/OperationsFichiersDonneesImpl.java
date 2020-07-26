@@ -31,21 +31,28 @@ public class OperationsFichiersDonneesImpl implements OperationsFichiersDonnees 
 	public InformationsEntree lireFichierEntree(String chemin) throws IOException {
 		
 		final InformationsEntree informationsEntree = new InformationsEntree();
+		BufferedReader reader = null;
 		
-		BufferedReader reader = Files.newBufferedReader(Paths.get(chemin));
-		List<String> lignesFichier = reader.lines().collect(Collectors.toList());
-		
-		IntStream
-			.range(0, lignesFichier.size() - 1)
-			.forEach(i -> {
-				if (i == 0) {
-					Grille grille = this.creerGrille(lignesFichier, i);
-					informationsEntree.setGrille(grille);
-				} else if ((i % 2) != 0) {
-					Tondeuse tondeuse = this.creerTondeuse(lignesFichier, i);
-					informationsEntree.ajouterTondeuse(tondeuse);
-				}
-			});
+		try {
+			reader = Files.newBufferedReader(Paths.get(chemin));
+			List<String> lignesFichier = reader.lines().collect(Collectors.toList());
+			
+			IntStream
+				.range(0, lignesFichier.size() - 1)
+				.forEach(i -> {
+					if (i == 0) {
+						Grille grille = this.creerGrille(lignesFichier, i);
+						informationsEntree.setGrille(grille);
+					} else if ((i % 2) != 0) {
+						Tondeuse tondeuse = this.creerTondeuse(lignesFichier, i);
+						informationsEntree.ajouterTondeuse(tondeuse);
+					}
+				});
+		} finally {
+			if (reader != null) {
+				reader.close();
+			}
+		}
 		
 		return informationsEntree;
 	}
