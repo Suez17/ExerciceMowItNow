@@ -5,6 +5,7 @@ import java.util.List;
 
 import fr.mowitnow.exercice.bo.InformationsEntree;
 import fr.mowitnow.exercice.bo.Tondeuse;
+import fr.mowitnow.exercice.exception.ExceptionFichierEntree;
 
 /**
  * Opérations sur des fichiers de données
@@ -18,5 +19,5 @@ public interface OperationsFichiersDonnees {
 	 * @return les informations d'entrée
 	 * @throws IOException 
 	 */
-	InformationsEntree lireFichierEntree(String chemin) throws IOException;
+	InformationsEntree lireFichierEntree(String chemin) throws IOException, ExceptionFichierEntree;
 }
