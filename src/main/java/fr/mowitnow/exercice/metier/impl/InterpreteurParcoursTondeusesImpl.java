@@ -62,7 +62,7 @@ public class InterpreteurParcoursTondeusesImpl implements InterpreteurParcoursTo
 						}
 						break;
 					case ACTION_AVANCER: 
-						avancerTondeuse(tondeuse);
+						avancerTondeuse(tondeuse, grille);
 						break;
 				}
 			});
@@ -71,23 +71,32 @@ public class InterpreteurParcoursTondeusesImpl implements InterpreteurParcoursTo
 	}
 	
 	/**
-	 * Avancer une tondeuse
+	 * Avancer une tondeuse dans la grille
 	 * 
 	 * @param tondeuse
+	 * @param grille
 	 */
-	private void avancerTondeuse(Tondeuse tondeuse) {
+	private void avancerTondeuse(Tondeuse tondeuse, Grille grille) {
 		switch (tondeuse.getOrientation()) {
 			case E:
-				tondeuse.avancerX();
+				if (tondeuse.getPositionX() < grille.getMaxX()) {
+					tondeuse.avancerX();
+				}
 				break;
 			case N:
-				tondeuse.avancerY();
+				if (tondeuse.getPositionY() < grille.getMaxY()) {
+					tondeuse.avancerY();
+				}
 				break;
 			case S:
-				tondeuse.reculerY();
+				if (tondeuse.getPositionY() > 0) {
+					tondeuse.reculerY();
+				}
 				break;
 			case W:
-				tondeuse.reculerX();
+				if (tondeuse.getPositionX() > 0) {
+					tondeuse.reculerX();
+				}
 				break;
 		}
 	}
