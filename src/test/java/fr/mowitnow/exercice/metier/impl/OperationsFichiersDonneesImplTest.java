@@ -16,6 +16,7 @@ import fr.mowitnow.exercice.bo.Grille;
 import fr.mowitnow.exercice.bo.InformationsEntree;
 import fr.mowitnow.exercice.bo.Tondeuse;
 import fr.mowitnow.exercice.enumeration.PointCardinal;
+import fr.mowitnow.exercice.exception.ExceptionFichierEntree;
 import fr.mowitnow.exercice.metier.OperationsFichiersDonnees;
 
 public class OperationsFichiersDonneesImplTest {
@@ -74,5 +75,72 @@ public class OperationsFichiersDonneesImplTest {
 
 		InformationsEntree informationsEntreeActual = 
 				this.operationsFichiersDonnees.lireFichierEntree("cheminInexistant");
+	}
+	
+	@Test(expected = ExceptionFichierEntree.class)
+	public void testLireFichierEntree_FichierInfosGrilleIncorrects() throws IOException {
+		File fichierTemp = this.dossierTemp.newFile("fichierTest.txt");
+		BufferedWriter writer = Files.newBufferedWriter(fichierTemp.toPath());
+		writer.append("5\n");
+		writer.append("1 2 N\n");
+		writer.append("GAGAGAGAA\n");
+		writer.append("3 3 E\n");
+		writer.append("AADAADADDA\n");
+		writer.flush();
+		
+		InformationsEntree informationsEntreeActual = 
+				this.operationsFichiersDonnees.lireFichierEntree(fichierTemp.getPath());
+		
+		writer.close();
+	}
+	
+	@Test(expected = ExceptionFichierEntree.class)
+	public void testLireFichierEntree_FichierInfosTondeuseIncorrects() throws IOException {
+		File fichierTemp = this.dossierTemp.newFile("fichierTest.txt");
+		BufferedWriter writer = Files.newBufferedWriter(fichierTemp.toPath());
+		writer.append("5 5\n");
+		writer.append("1  N\n");
+		writer.append("GAGAGAGAA\n");
+		writer.append("3 3 E\n");
+		writer.append("AADAADADDA\n");
+		writer.flush();
+		
+		InformationsEntree informationsEntreeActual = 
+				this.operationsFichiersDonnees.lireFichierEntree(fichierTemp.getPath());
+		
+		writer.close();
+	}
+	
+	@Test(expected = ExceptionFichierEntree.class)
+	public void testLireFichierEntree_FichierPointCardinalIncorrect() throws IOException {
+		File fichierTemp = this.dossierTemp.newFile("fichierTest.txt");
+		BufferedWriter writer = Files.newBufferedWriter(fichierTemp.toPath());
+		writer.append("5 5\n");
+		writer.append("1 2 Z\n");
+		writer.append("GAGAGAGAA\n");
+		writer.append("3 3 E\n");
+		writer.append("AADAADADDA\n");
+		writer.flush();
+		
+		InformationsEntree informationsEntreeActual = 
+				this.operationsFichiersDonnees.lireFichierEntree(fichierTemp.getPath());
+		
+		writer.close();
+	}
+	
+	@Test(expected = ExceptionFichierEntree.class)
+	public void testLireFichierEntree_FichierInformationsManquantes() throws IOException {
+		File fichierTemp = this.dossierTemp.newFile("fichierTest.txt");
+		BufferedWriter writer = Files.newBufferedWriter(fichierTemp.toPath());
+		writer.append("5 5\n");
+		writer.append("1 2 N\n");
+		writer.append("3 3 E\n");
+		writer.append("AADAADADDA\n");
+		writer.flush();
+		
+		InformationsEntree informationsEntreeActual = 
+				this.operationsFichiersDonnees.lireFichierEntree(fichierTemp.getPath());
+		
+		writer.close();
 	}
 }
