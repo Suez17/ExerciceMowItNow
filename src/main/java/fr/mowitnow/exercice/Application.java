@@ -14,11 +14,15 @@ import fr.mowitnow.exercice.metier.impl.OperationsFichiersDonneesImpl;
 public class Application {
 
 	public static void main(String[] args) throws IOException {
-		String cheminFichierEntree = args[0];
-		InterpreteurParcoursTondeuses interpreteurParcoursTondeuses = new InterpreteurParcoursTondeusesImpl();
-		OperationsFichiersDonnees operationsFichiersDonnees = new OperationsFichiersDonneesImpl();
-		InformationsEntree informationsEntree = operationsFichiersDonnees.lireFichierEntree(cheminFichierEntree);
-		interpreteurParcoursTondeuses.interpreterParcoursTondeuses(informationsEntree);
+		if (args.length != 0) {
+			String cheminFichierEntree = args[0];
+			InterpreteurParcoursTondeuses interpreteurParcoursTondeuses = new InterpreteurParcoursTondeusesImpl();
+			OperationsFichiersDonnees operationsFichiersDonnees = new OperationsFichiersDonneesImpl();
+			InformationsEntree informationsEntree = operationsFichiersDonnees.lireFichierEntree(cheminFichierEntree);
+			interpreteurParcoursTondeuses.interpreterParcoursTondeuses(informationsEntree);
+		} else {
+			System.out.println("Le chemin du fichier d'entrée n'est pas spécifié");
+		}
 	}
 
 }
